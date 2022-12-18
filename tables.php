@@ -8,7 +8,7 @@
 
 include "config.php";
 
-include "list_tables.php";
+include "table_view.php";
 
 ?>
 <h4>Please choose which table to take:</h4>
@@ -21,7 +21,7 @@ include "list_tables.php";
 
 <?php
 
-$sql_command = "SELECT table_id, occupancy FROM table_entity";
+$sql_command = "SELECT table_id from table_entity WHERE occupancy = 0";
 
 $myresult = mysqli_query($db, $sql_command);
 
@@ -40,3 +40,8 @@ while($id_rows = mysqli_fetch_assoc($myresult))
 
 <button>SELECT</button>
 </form>
+
+
+<?php include table_view.php?>;
+
+
