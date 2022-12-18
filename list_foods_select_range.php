@@ -55,8 +55,10 @@ if (isset($_POST['mintime'])){
     $fname = $row['fname'];
     $fcategory = $row['fcategory'];
     $fprep = $row['fprep'];
+    $fprice = $row['fprice'];
 
-    echo "<tr>" . "<th>" . $fid . "</th>" . "<th>" . $fname . "</th>" . "<th>" . $fcategory . "</th>" . "<th>" . $fprep . "</th>" . "</tr>" ;
+
+    echo "<tr>" . "<th>" . $fid . "</th>" . "<th>" . $fname . "</th>" . "<th>" . $fcategory . "</th>" . "<th>" . $fprep . "</th>" . "<th>" . $fprice . "</th>" . "</tr>" ;
   }
 
 }

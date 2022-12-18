@@ -34,7 +34,7 @@ tr:nth-child(even) {
 
 	<table>
 
-<tr> <th> ID </th> <th> NAME </th> <th>CATEGORY</th> <th>PREP TIME</th> </tr> 
+<tr> <th> ID </th> <th> NAME </th> <th>CATEGORY</th> <th>PREP TIME</th> <th>PRICE</th></tr> 
 
 <?php
 
@@ -54,8 +54,10 @@ if (isset($_POST['ids'])){
     $fname = $row['fname'];
     $fcategory = $row['fcategory'];
     $fprep = $row['fprep'];
+    $fprice = $row['fprice'];
+    
 
-    echo "<tr>" . "<th>" . $fid . "</th>" . "<th>" . $fname . "</th>" . "<th>" . $fcategory . "</th>" . "<th>" . $fprep . "</th>" . "</tr>" ;
+    echo "<tr>" . "<th>" . $fid . "</th>" . "<th>" . $fname . "</th>" . "<th>" . $fcategory . "</th>" . "<th>" . $fprep . "</th>" . "<th>" . $fprice . "</th>" . "</tr>" ;
   }
 
 }

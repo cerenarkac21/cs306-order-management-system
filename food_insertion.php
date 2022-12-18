@@ -49,6 +49,8 @@ input[type=submit]:hover {
             <input type="text" id="fcategory" name="fcategory">
             <b>Preparation time</b>: 
             <input type="text" id="fprep" name="fprep">
+            <b>Food Price</b>: 
+            <input type="text" id="fprice" name="fprice">
             <input type="submit" value="Submit"> 
         </form> 
         

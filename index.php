@@ -11,7 +11,8 @@ while($row = mysqli_fetch_assoc($result)) { // Iterating the result
     $fname = $row['fname']; 
     $fcategory = $row['fcategory']; 
     $fprep = $row['fprep'];
-    echo $fid . " " . $fname . " " . $fcategory . " " . $fprep . "<br>"; 
+    $fprice = $row['fprice'];
+    echo $fid . " " . $fname . " " . $fcategory . " " . $fprep . " " . $fprice . "<br>"; 
 } 
 
 ?>
