@@ -11,12 +11,14 @@ include "table_view.php";
 
 ?>
 
+
+
 <h3>
 	Take Table
 </h3>
 <h4>Please choose which table to take:</h4>
 
-<form action="create_tables.php" method="POST">
+<form action="create_table.php" method="POST">
 <select name="ids">
 
 
@@ -79,9 +81,9 @@ while($id_rows = mysqli_fetch_assoc($myresult))
 ?>
 </select>
 
+
 <button>SELECT</button>
 </form>
-
 
 
 
