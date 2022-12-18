@@ -11,7 +11,7 @@ include "config.php";
 include "list_tables.php";
 
 ?>
-<h4>Please choose which food to delete:</h4>
+<h4>Please choose which table to take:</h4>
 
 <form action="create_check.php" method="POST">
 <select name="ids">
