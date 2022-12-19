@@ -6,6 +6,9 @@
 </head>
 <body>
 <div class="container">
+
+
+
 	<h4>Please select orders for the table <?php echo $table_id = $_GET['table'];?></h4>
 <hr>
 <form method="post" action="add_order.php">
@@ -27,6 +30,18 @@
         
         $brand_query = "SELECT * FROM foods";
         $query_run = mysqli_query($con, $brand_query);
+        
+
+        $check_query = "SELECT check_id FROM receives WHERE table_id = $table_id";
+        
+        $myresult = mysqli_query($con, $check_query);
+
+
+        while($id_rows = mysqli_fetch_assoc($myresult))
+        {
+            $check_id = $id_rows['check_id'];
+        }
+
 
         if(mysqli_num_rows($query_run) > 0)
         {
@@ -44,6 +59,8 @@
 
                 <td><input type="number" value=1 name="prod_qty[]" class="form-control"></td>
                 <input type="hidden" name="table_id[]" value="<?= $table_id; ?>">
+                <input type="hidden" name="check_id[]" value="<?= $check_id; ?>">
+                <input type="hidden" name="food_id[]" value="<?= $brand['fid']; ?>">
         
                 
                 </tr>

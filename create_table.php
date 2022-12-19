@@ -11,7 +11,11 @@ if (isset($_POST['ids'])){
 $selection_id = $_POST['ids'];
 $sql_statement = "INSERT INTO Check_entity (delivery_type) VALUES ('in-cite');
 				  UPDATE table_entity SET occupancy=1 WHERE table_id=$selection_id;
-				  )
+				  INSERT INTO receives (table_id, check_id)
+				   SELECT te.table_id, ce.check_id
+				   FROM table_entity te, Check_entity ce
+				  WHERE te.table_id = $selection_id AND ce.check_id = (SELECT MAX(check_id) FROM Check_entity);
+				  
 ";
 
 /*

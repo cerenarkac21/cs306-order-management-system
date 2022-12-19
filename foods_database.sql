@@ -1,9 +1,9 @@
--- phpMyAdmin SQL Dump
+cr-- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 15, 2022 at 08:42 PM
+-- Generation Time: Dec 19, 2022 at 07:20 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.6
 
@@ -26,7 +26,6 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `Cashier`
 --
-
 
 CREATE DATABASE foods_database;
 
@@ -73,12 +72,36 @@ CREATE TABLE `foods` (
   `fid` int(11) NOT NULL,
   `fname` varchar(50) NOT NULL,
   `fcategory` varchar(50) NOT NULL,
-  `fprep` float NOT NULL
+  `fprep` float NOT NULL,
+  `fprice` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `foods`
 --
+
+INSERT INTO `foods` (`fid`, `fname`, `fcategory`, `fprep`, `fprice`) VALUES
+(10, 'pizza', 'main course', 30, 10),
+(11, 'chocolate cake', 'dessert', 60, 15),
+(12, 'spaghetti', 'main course', 45, 20),
+(13, 'apple pie', 'dessert', 75, 4),
+(14, 'grilled chicken', 'main course', 20, 6),
+(15, 'caesar salad', 'appetizer', 15, 12),
+(16, 'margarita', 'drinks', 5, 10),
+(17, 'taco', 'main course', 15, 15),
+(18, 'chocolate mousse', 'dessert', 30, 40),
+(19, 'beef stir fry', 'main course', 20, 10),
+(20, 'mojito', 'drinks', 10, 100),
+(21, 'crab cakes', 'appetizer', 30, 15),
+(22, 'cheesecake', 'dessert', 60, 30),
+(23, 'grilled salmon', 'main course', 25, 50),
+(24, 'martini', 'drinks', 5, 60),
+(25, 'spring rolls', 'appetizer', 20, 20),
+(26, 'chocolate truffles', 'dessert', 45, 15),
+(27, 'steak', 'main course', 35, 20),
+(28, 'cosmopolitan', 'drinks', 10, 15),
+(29, 'shrimp cocktail', 'appetizer', 15, 40),
+(31, 'iskender', 'main course', 14, 400);
 
 -- --------------------------------------------------------
 
@@ -93,6 +116,31 @@ CREATE TABLE `Online_Customer` (
   `address` varchar(300) DEFAULT NULL,
   `online_cust_tel_no` varchar(50) DEFAULT NULL,
   `waiting_food` bit(1) DEFAULT b'1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `order_id` int(11) NOT NULL,
+  `food_id` int(11) DEFAULT NULL,
+  `check_id` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `order_time` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `receives`
+--
+
+CREATE TABLE `receives` (
+  `table_id` int(11) DEFAULT NULL,
+  `check_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -121,6 +169,32 @@ CREATE TABLE `table_entity` (
   `waiting_food` bit(1) DEFAULT b'0',
   `which_area` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `table_entity`
+--
+
+INSERT INTO `table_entity` (`table_id`, `occupancy`, `waiting_food`, `which_area`) VALUES
+(1, b'0', b'0', NULL),
+(2, b'0', b'0', NULL),
+(3, b'0', b'0', NULL),
+(4, b'0', b'0', NULL),
+(5, b'0', b'0', NULL),
+(6, b'0', b'0', NULL),
+(7, b'0', b'0', NULL),
+(8, b'0', b'0', NULL),
+(9, b'0', b'0', NULL),
+(10, b'0', b'0', NULL),
+(11, b'0', b'0', NULL),
+(12, b'0', b'0', NULL),
+(13, b'0', b'0', NULL),
+(14, b'0', b'0', NULL),
+(15, b'0', b'0', NULL),
+(16, b'0', b'0', NULL),
+(17, b'0', b'0', NULL),
+(18, b'0', b'0', NULL),
+(19, b'0', b'0', NULL),
+(20, b'0', b'0', NULL);
 
 -- --------------------------------------------------------
 
@@ -192,6 +266,21 @@ ALTER TABLE `Online_Customer`
   ADD PRIMARY KEY (`userID`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `food_id` (`food_id`),
+  ADD KEY `check_id` (`check_id`);
+
+--
+-- Indexes for table `receives`
+--
+ALTER TABLE `receives`
+  ADD PRIMARY KEY (`check_id`),
+  ADD KEY `table_id` (`table_id`);
+
+--
 -- Indexes for table `Reservation`
 --
 ALTER TABLE `Reservation`
@@ -226,13 +315,42 @@ ALTER TABLE `Waiter`
 --
 
 --
+-- AUTO_INCREMENT for table `Check_entity`
+--
+ALTER TABLE `Check_entity`
+  MODIFY `check_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `foods`
 --
 ALTER TABLE `foods`
-  MODIFY `fid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `fid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`food_id`) REFERENCES `foods` (`fid`),
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`check_id`) REFERENCES `Check_entity` (`check_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `receives`
+--
+ALTER TABLE `receives`
+  ADD CONSTRAINT `receives_ibfk_1` FOREIGN KEY (`table_id`) REFERENCES `table_entity` (`table_id`),
+  ADD CONSTRAINT `receives_ibfk_2` FOREIGN KEY (`check_id`) REFERENCES `Check_entity` (`check_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
