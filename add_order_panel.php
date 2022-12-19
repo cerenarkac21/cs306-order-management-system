@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +22,7 @@
 	<tbody>
 
     <?php
-        
+        /* deneme */
         $con = mysqli_connect("localhost","root","","foods_database");
 
         
