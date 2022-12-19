@@ -26,7 +26,8 @@ $sql_command = "SELECT fid, fname FROM foods";
 
 $myresult = mysqli_query($db, $sql_command);
 
-
+/* pinar deneme */
+/*jhfjg*/
 while($id_rows = mysqli_fetch_assoc($myresult))
 {
 	$fid = $id_rows['fid'];
