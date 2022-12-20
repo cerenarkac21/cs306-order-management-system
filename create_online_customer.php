@@ -22,11 +22,7 @@ $stmt->bind_param("ss", $first_name, $last_name);;*/
 $result = mysqli_multi_query($db, $sql_statement);
 
 
-<<<<<<< Updated upstream
-header ("Location: add_order_panel.php?table=$selection_id");
-=======
 header ("Location: add_online_order_panel.php?onlinecustomer=$selection_id");
->>>>>>> Stashed changes
 
 
 }
