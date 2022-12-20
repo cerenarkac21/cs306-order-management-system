@@ -17,11 +17,7 @@ foreach ($_POST['prodname'] as $key => $value)
 
     echo "User: " . $userID . "  Check: " . $check_id . "  Food: " . $prodname . "  Quantity: ".  $prod_qty . "<br>\n";
     #echo $table_id. " numaralı masaya: ". $prodname . " " . $prod_qty . " adet" . "<br>\n";
-<<<<<<< Updated upstream
-	$insertqry="INSERT INTO match_with(food_id, check_id, quantity) VALUES ('$food_id','$check_id','$prod_qty')";
-=======
-	$insertqry="INSERT INTO receives_online(food_id, check_id, quantity) VALUES ('$food_id','$check_id','$prod_qty')";
->>>>>>> Stashed changes
+	$insertqry="INSERT INTO orders (food_id, check_id, quantity) VALUES ('$food_id','$check_id','$prod_qty')";
 	$insertqry=mysqli_multi_query($db,$insertqry);
 	}
 	

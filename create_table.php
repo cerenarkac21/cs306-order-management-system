@@ -9,12 +9,12 @@ $tableID = $_GET['table_id'];
 if (isset($_POST['ids'])){
 
 $selection_id = $_POST['ids'];
-$sql_statement = "INSERT INTO Check_entity (delivery_type) VALUES ('in-cite');
+$sql_statement = "INSERT INTO check_entity (delivery_type) VALUES ('in-cite');
 				  UPDATE table_entity SET occupancy=1 WHERE table_id=$selection_id;
 				  INSERT INTO receives (table_id, check_id)
 				   SELECT te.table_id, ce.check_id
-				   FROM table_entity te, Check_entity ce
-				  WHERE te.table_id = $selection_id AND ce.check_id = (SELECT MAX(check_id) FROM Check_entity);
+				   FROM table_entity te, check_entity ce
+				  WHERE te.table_id = $selection_id AND ce.check_id = (SELECT MAX(check_id) FROM check_entity);
 				  
 ";
 
@@ -25,7 +25,7 @@ $stmt->bind_param("ss", $first_name, $last_name);;*/
 $result = mysqli_multi_query($db, $sql_statement);
 
 
-header ("Location: add_online_order_panel.php?table=$selection_id");
+header ("Location: add_order_panel.php?table=$selection_id");
 
 
 }

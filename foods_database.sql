@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< Updated upstream
--- Generation Time: Dec 20, 2022 at 02:12 PM
-=======
--- Generation Time: Dec 20, 2022 at 03:15 PM
->>>>>>> Stashed changes
+-- Generation Time: Dec 21, 2022 at 12:00 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -81,9 +77,6 @@ INSERT INTO `check_entity` (`check_id`, `delivery_type`, `total_price`, `payment
 (6, 'in-cite', NULL, NULL, NULL),
 (7, 'in-cite', NULL, NULL, NULL),
 (8, 'in-cite', NULL, NULL, NULL),
-<<<<<<< Updated upstream
-(9, 'in-cite', NULL, NULL, NULL);
-=======
 (9, 'in-cite', NULL, NULL, NULL),
 (10, 'online', NULL, NULL, NULL),
 (11, 'online', NULL, NULL, NULL),
@@ -96,8 +89,11 @@ INSERT INTO `check_entity` (`check_id`, `delivery_type`, `total_price`, `payment
 (18, 'online', NULL, NULL, NULL),
 (19, 'online', NULL, NULL, NULL),
 (20, 'online', NULL, NULL, NULL),
-(21, 'online', NULL, NULL, NULL);
->>>>>>> Stashed changes
+(21, 'online', NULL, NULL, NULL),
+(22, 'online', NULL, NULL, NULL),
+(23, 'online', NULL, NULL, NULL),
+(24, 'online', NULL, NULL, NULL),
+(25, 'online', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -164,7 +160,7 @@ CREATE TABLE `online_customer` (
   `username` varchar(50) DEFAULT NULL,
   `address` varchar(300) DEFAULT NULL,
   `online_cust_tel_no` varchar(50) DEFAULT NULL,
-  `waiting_food` binary(1) DEFAULT NULL
+  `waiting_food` binary(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -172,6 +168,7 @@ CREATE TABLE `online_customer` (
 --
 
 INSERT INTO `online_customer` (`userID`, `username`, `address`, `online_cust_tel_no`, `waiting_food`) VALUES
+(0, 'pinar', 'kocaeli', '05333333', 0x31),
 (1, 'cerenarkac', 'sabanci university', '5555555', 0x31);
 
 -- --------------------------------------------------------
@@ -197,9 +194,6 @@ INSERT INTO `orders` (`order_id`, `food_id`, `check_id`, `quantity`, `order_time
 (20, 14, 8, 4, '2022-12-20 01:22:30'),
 (21, 16, 8, 1, '2022-12-20 01:22:30'),
 (22, 28, 8, 2, '2022-12-20 01:22:30'),
-<<<<<<< Updated upstream
-(23, 17, 9, 1, '2022-12-20 15:37:42');
-=======
 (23, 17, 9, 1, '2022-12-20 15:37:42'),
 (24, 27, 9, 1, '2022-12-20 16:16:04'),
 (25, 28, 9, 1, '2022-12-20 16:21:11'),
@@ -208,7 +202,6 @@ INSERT INTO `orders` (`order_id`, `food_id`, `check_id`, `quantity`, `order_time
 (28, 27, 9, 3, '2022-12-20 16:44:26'),
 (29, 10, 9, 1, '2022-12-20 16:45:59'),
 (30, 31, 9, 3, '2022-12-20 16:48:49');
->>>>>>> Stashed changes
 
 -- --------------------------------------------------------
 
@@ -229,7 +222,6 @@ INSERT INTO `receives` (`table_id`, `check_id`) VALUES
 (1, 9),
 (13, 8);
 
-<<<<<<< Updated upstream
 -- --------------------------------------------------------
 
 --
@@ -247,26 +239,6 @@ CREATE TABLE `receives_online` (
 -- Table structure for table `reservation`
 --
 
-=======
--- --------------------------------------------------------
-
---
--- Table structure for table `receives_online`
---
-
-CREATE TABLE `receives_online` (
-  `userID` int(11) DEFAULT NULL,
-  `check_id` int(11) NOT NULL,
-  `quantity` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `reservation`
---
-
->>>>>>> Stashed changes
 CREATE TABLE `reservation` (
   `reservation_id` int(11) NOT NULL,
   `reserved_time` float DEFAULT NULL,
@@ -457,11 +429,7 @@ ALTER TABLE `waiter`
 -- AUTO_INCREMENT for table `check_entity`
 --
 ALTER TABLE `check_entity`
-<<<<<<< Updated upstream
-  MODIFY `check_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-=======
-  MODIFY `check_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
->>>>>>> Stashed changes
+  MODIFY `check_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `foods`
@@ -473,11 +441,7 @@ ALTER TABLE `foods`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-<<<<<<< Updated upstream
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
-=======
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
->>>>>>> Stashed changes
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Constraints for dumped tables
