@@ -49,6 +49,9 @@ input[type=submit]:hover {
             <input type="text" id="address" name="address">
             <b>Telephone</b>: 
             <input type="text" id="online_cust_tel_no" name="online_cust_tel_no">
+            <b>Waits food?</b>: 
+            <input type="text" id="waiting_food" name="waiting_food">
+
             <input type="submit" value="Submit"> 
         </form> 
         
