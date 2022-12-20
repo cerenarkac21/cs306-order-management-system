@@ -74,10 +74,26 @@
 
 <div class="app">
     <div class="users">
-        <button class="button button1">Admin</button>
-        <button class="button button2">Waiter</button>
-        <button class="button button3">Courier</button>
-        <button class="button button4">Cashier</button>
+        <button onclick=handleClick1() class="button button1">Admin</button>
+        <script>
+          function handleClick1() {window.location.href = "log-in_admin.php";}
+        </script>
+
+        <button onclick=handleClick2() class="button button2">Waiter</button>
+        <script>
+          function handleClick2() {window.location.href = "log-in_waiter.php";}
+        </script>
+
+        <button onclick=handleClick3() class="button button3">Courier</button>
+        <script>
+          function handleClick3() {window.location.href = "log-in_courier.php";}
+        </script>
+
+        <button onclick=handleClick4() class="button button4">Cashier</button>
+        <script>
+          function handleClick4() {window.location.href = "log-in_cashier.php";}
+        </script>
+
     </div>
 </div>
 
@@ -85,3 +101,4 @@
 
 </body>
 </html>
+
