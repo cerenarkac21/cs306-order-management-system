@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< Updated upstream
 -- Generation Time: Dec 20, 2022 at 02:12 PM
+=======
+-- Generation Time: Dec 20, 2022 at 03:15 PM
+>>>>>>> Stashed changes
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -77,7 +81,23 @@ INSERT INTO `check_entity` (`check_id`, `delivery_type`, `total_price`, `payment
 (6, 'in-cite', NULL, NULL, NULL),
 (7, 'in-cite', NULL, NULL, NULL),
 (8, 'in-cite', NULL, NULL, NULL),
+<<<<<<< Updated upstream
 (9, 'in-cite', NULL, NULL, NULL);
+=======
+(9, 'in-cite', NULL, NULL, NULL),
+(10, 'online', NULL, NULL, NULL),
+(11, 'online', NULL, NULL, NULL),
+(12, 'online', NULL, NULL, NULL),
+(13, 'online', NULL, NULL, NULL),
+(14, 'online', NULL, NULL, NULL),
+(15, 'online', NULL, NULL, NULL),
+(16, 'online', NULL, NULL, NULL),
+(17, 'online', NULL, NULL, NULL),
+(18, 'online', NULL, NULL, NULL),
+(19, 'online', NULL, NULL, NULL),
+(20, 'online', NULL, NULL, NULL),
+(21, 'online', NULL, NULL, NULL);
+>>>>>>> Stashed changes
 
 -- --------------------------------------------------------
 
@@ -147,6 +167,13 @@ CREATE TABLE `online_customer` (
   `waiting_food` binary(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `online_customer`
+--
+
+INSERT INTO `online_customer` (`userID`, `username`, `address`, `online_cust_tel_no`, `waiting_food`) VALUES
+(1, 'cerenarkac', 'sabanci university', '5555555', 0x31);
+
 -- --------------------------------------------------------
 
 --
@@ -170,7 +197,18 @@ INSERT INTO `orders` (`order_id`, `food_id`, `check_id`, `quantity`, `order_time
 (20, 14, 8, 4, '2022-12-20 01:22:30'),
 (21, 16, 8, 1, '2022-12-20 01:22:30'),
 (22, 28, 8, 2, '2022-12-20 01:22:30'),
+<<<<<<< Updated upstream
 (23, 17, 9, 1, '2022-12-20 15:37:42');
+=======
+(23, 17, 9, 1, '2022-12-20 15:37:42'),
+(24, 27, 9, 1, '2022-12-20 16:16:04'),
+(25, 28, 9, 1, '2022-12-20 16:21:11'),
+(26, 10, 9, 1, '2022-12-20 16:26:41'),
+(27, 13, 9, 2, '2022-12-20 16:26:41'),
+(28, 27, 9, 3, '2022-12-20 16:44:26'),
+(29, 10, 9, 1, '2022-12-20 16:45:59'),
+(30, 31, 9, 3, '2022-12-20 16:48:49');
+>>>>>>> Stashed changes
 
 -- --------------------------------------------------------
 
@@ -191,6 +229,7 @@ INSERT INTO `receives` (`table_id`, `check_id`) VALUES
 (1, 9),
 (13, 8);
 
+<<<<<<< Updated upstream
 -- --------------------------------------------------------
 
 --
@@ -208,6 +247,26 @@ CREATE TABLE `receives_online` (
 -- Table structure for table `reservation`
 --
 
+=======
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `receives_online`
+--
+
+CREATE TABLE `receives_online` (
+  `userID` int(11) DEFAULT NULL,
+  `check_id` int(11) NOT NULL,
+  `quantity` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reservation`
+--
+
+>>>>>>> Stashed changes
 CREATE TABLE `reservation` (
   `reservation_id` int(11) NOT NULL,
   `reserved_time` float DEFAULT NULL,
@@ -398,7 +457,11 @@ ALTER TABLE `waiter`
 -- AUTO_INCREMENT for table `check_entity`
 --
 ALTER TABLE `check_entity`
+<<<<<<< Updated upstream
   MODIFY `check_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+=======
+  MODIFY `check_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+>>>>>>> Stashed changes
 
 --
 -- AUTO_INCREMENT for table `foods`
@@ -410,7 +473,11 @@ ALTER TABLE `foods`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
+<<<<<<< Updated upstream
   MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+=======
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+>>>>>>> Stashed changes
 
 --
 -- Constraints for dumped tables
