@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Dec 19, 2022 at 07:20 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.1.6
+-- Host: 127.0.0.1
+-- Generation Time: Dec 20, 2022 at 02:12 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,25 +24,39 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Cashier`
+-- Table structure for table `admins`
 --
 
-CREATE DATABASE foods_database;
-
-USE foods_database;
-
-CREATE TABLE `Cashier` (
-  `cashier_id` int(11) NOT NULL,
-  `cashier_name_surname` varchar(50) DEFAULT NULL
+CREATE TABLE `admins` (
+  `pssword` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Check_entity`
+-- Table structure for table `cashier`
 --
 
-CREATE TABLE `Check_entity` (
+CREATE TABLE `cashier` (
+  `cashier_id` int(11) NOT NULL,
+  `cashier_name_surname` varchar(50) DEFAULT NULL,
+  `pssword` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cashier`
+--
+
+INSERT INTO `cashier` (`cashier_id`, `cashier_name_surname`, `pssword`) VALUES
+(1, 'hasan ertugrul', 4444);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `check_entity`
+--
+
+CREATE TABLE `check_entity` (
   `check_id` int(11) NOT NULL,
   `delivery_type` varchar(50) DEFAULT NULL,
   `total_price` float DEFAULT NULL,
@@ -50,16 +64,32 @@ CREATE TABLE `Check_entity` (
   `payment_type` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `check_entity`
+--
+
+INSERT INTO `check_entity` (`check_id`, `delivery_type`, `total_price`, `payment_time`, `payment_type`) VALUES
+(1, 'in-cite', NULL, NULL, NULL),
+(2, 'in-cite', NULL, NULL, NULL),
+(3, 'in-cite', NULL, NULL, NULL),
+(4, 'in-cite', NULL, NULL, NULL),
+(5, 'in-cite', NULL, NULL, NULL),
+(6, 'in-cite', NULL, NULL, NULL),
+(7, 'in-cite', NULL, NULL, NULL),
+(8, 'in-cite', NULL, NULL, NULL),
+(9, 'in-cite', NULL, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Courier`
+-- Table structure for table `courier`
 --
 
-CREATE TABLE `Courier` (
+CREATE TABLE `courier` (
   `courier_id` int(11) NOT NULL,
   `courier_name_surname` varchar(50) DEFAULT NULL,
-  `courier_tel_no` varchar(50) DEFAULT NULL
+  `courier_tel_no` varchar(50) DEFAULT NULL,
+  `pssword` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -106,16 +136,15 @@ INSERT INTO `foods` (`fid`, `fname`, `fcategory`, `fprep`, `fprice`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Online_Customer`
+-- Table structure for table `online_customer`
 --
 
-CREATE TABLE `Online_Customer` (
+CREATE TABLE `online_customer` (
   `userID` int(11) NOT NULL,
   `username` varchar(50) DEFAULT NULL,
-  `password` varchar(50) DEFAULT NULL,
   `address` varchar(300) DEFAULT NULL,
   `online_cust_tel_no` varchar(50) DEFAULT NULL,
-  `waiting_food` bit(1) DEFAULT b'1'
+  `waiting_food` binary(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -132,6 +161,17 @@ CREATE TABLE `orders` (
   `order_time` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `food_id`, `check_id`, `quantity`, `order_time`) VALUES
+(19, 11, 8, 1, '2022-12-20 01:22:30'),
+(20, 14, 8, 4, '2022-12-20 01:22:30'),
+(21, 16, 8, 1, '2022-12-20 01:22:30'),
+(22, 28, 8, 2, '2022-12-20 01:22:30'),
+(23, 17, 9, 1, '2022-12-20 15:37:42');
+
 -- --------------------------------------------------------
 
 --
@@ -143,13 +183,32 @@ CREATE TABLE `receives` (
   `check_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `receives`
+--
+
+INSERT INTO `receives` (`table_id`, `check_id`) VALUES
+(1, 9),
+(13, 8);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Reservation`
+-- Table structure for table `receives_online`
 --
 
-CREATE TABLE `Reservation` (
+CREATE TABLE `receives_online` (
+  `userID` int(11) DEFAULT NULL,
+  `check_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reservation`
+--
+
+CREATE TABLE `reservation` (
   `reservation_id` int(11) NOT NULL,
   `reserved_time` float DEFAULT NULL,
   `reservation_time` date DEFAULT NULL,
@@ -175,7 +234,7 @@ CREATE TABLE `table_entity` (
 --
 
 INSERT INTO `table_entity` (`table_id`, `occupancy`, `waiting_food`, `which_area`) VALUES
-(1, b'0', b'0', NULL),
+(1, b'1', b'0', NULL),
 (2, b'0', b'0', NULL),
 (3, b'0', b'0', NULL),
 (4, b'0', b'0', NULL),
@@ -187,7 +246,7 @@ INSERT INTO `table_entity` (`table_id`, `occupancy`, `waiting_food`, `which_area
 (10, b'0', b'0', NULL),
 (11, b'0', b'0', NULL),
 (12, b'0', b'0', NULL),
-(13, b'0', b'0', NULL),
+(13, b'1', b'0', NULL),
 (14, b'0', b'0', NULL),
 (15, b'0', b'0', NULL),
 (16, b'0', b'0', NULL),
@@ -199,10 +258,10 @@ INSERT INTO `table_entity` (`table_id`, `occupancy`, `waiting_food`, `which_area
 -- --------------------------------------------------------
 
 --
--- Table structure for table `To_go`
+-- Table structure for table `to_go`
 --
 
-CREATE TABLE `To_go` (
+CREATE TABLE `to_go` (
   `to_go_id` int(11) NOT NULL,
   `waiting_food` bit(1) DEFAULT b'1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -210,10 +269,10 @@ CREATE TABLE `To_go` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Vehicle`
+-- Table structure for table `vehicle`
 --
 
-CREATE TABLE `Vehicle` (
+CREATE TABLE `vehicle` (
   `vehicle_id` int(11) NOT NULL,
   `availability` bit(1) DEFAULT b'1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -221,35 +280,49 @@ CREATE TABLE `Vehicle` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Waiter`
+-- Table structure for table `waiter`
 --
 
-CREATE TABLE `Waiter` (
+CREATE TABLE `waiter` (
   `waiter_id` int(11) NOT NULL,
   `waiter_name_surname` varchar(50) DEFAULT NULL,
-  `waiter_tel_no` varchar(50) DEFAULT NULL
+  `waiter_tel_no` varchar(50) DEFAULT NULL,
+  `pssword` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `waiter`
+--
+
+INSERT INTO `waiter` (`waiter_id`, `waiter_name_surname`, `waiter_tel_no`, `pssword`) VALUES
+(1, 'ceren arkac', '11111', 333);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `Cashier`
+-- Indexes for table `admins`
 --
-ALTER TABLE `Cashier`
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`pssword`);
+
+--
+-- Indexes for table `cashier`
+--
+ALTER TABLE `cashier`
   ADD PRIMARY KEY (`cashier_id`);
 
 --
--- Indexes for table `Check_entity`
+-- Indexes for table `check_entity`
 --
-ALTER TABLE `Check_entity`
+ALTER TABLE `check_entity`
   ADD PRIMARY KEY (`check_id`);
 
 --
--- Indexes for table `Courier`
+-- Indexes for table `courier`
 --
-ALTER TABLE `Courier`
+ALTER TABLE `courier`
   ADD PRIMARY KEY (`courier_id`);
 
 --
@@ -260,9 +333,9 @@ ALTER TABLE `foods`
   ADD UNIQUE KEY `fid` (`fid`);
 
 --
--- Indexes for table `Online_Customer`
+-- Indexes for table `online_customer`
 --
-ALTER TABLE `Online_Customer`
+ALTER TABLE `online_customer`
   ADD PRIMARY KEY (`userID`);
 
 --
@@ -281,9 +354,16 @@ ALTER TABLE `receives`
   ADD KEY `table_id` (`table_id`);
 
 --
--- Indexes for table `Reservation`
+-- Indexes for table `receives_online`
 --
-ALTER TABLE `Reservation`
+ALTER TABLE `receives_online`
+  ADD PRIMARY KEY (`check_id`),
+  ADD KEY `userID` (`userID`);
+
+--
+-- Indexes for table `reservation`
+--
+ALTER TABLE `reservation`
   ADD PRIMARY KEY (`reservation_id`);
 
 --
@@ -293,21 +373,21 @@ ALTER TABLE `table_entity`
   ADD PRIMARY KEY (`table_id`);
 
 --
--- Indexes for table `To_go`
+-- Indexes for table `to_go`
 --
-ALTER TABLE `To_go`
+ALTER TABLE `to_go`
   ADD PRIMARY KEY (`to_go_id`);
 
 --
--- Indexes for table `Vehicle`
+-- Indexes for table `vehicle`
 --
-ALTER TABLE `Vehicle`
+ALTER TABLE `vehicle`
   ADD PRIMARY KEY (`vehicle_id`);
 
 --
--- Indexes for table `Waiter`
+-- Indexes for table `waiter`
 --
-ALTER TABLE `Waiter`
+ALTER TABLE `waiter`
   ADD PRIMARY KEY (`waiter_id`);
 
 --
@@ -315,10 +395,10 @@ ALTER TABLE `Waiter`
 --
 
 --
--- AUTO_INCREMENT for table `Check_entity`
+-- AUTO_INCREMENT for table `check_entity`
 --
-ALTER TABLE `Check_entity`
-  MODIFY `check_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `check_entity`
+  MODIFY `check_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `foods`
@@ -330,7 +410,7 @@ ALTER TABLE `foods`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables
@@ -341,14 +421,14 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`food_id`) REFERENCES `foods` (`fid`),
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`check_id`) REFERENCES `Check_entity` (`check_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`check_id`) REFERENCES `check_entity` (`check_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `receives`
 --
 ALTER TABLE `receives`
   ADD CONSTRAINT `receives_ibfk_1` FOREIGN KEY (`table_id`) REFERENCES `table_entity` (`table_id`),
-  ADD CONSTRAINT `receives_ibfk_2` FOREIGN KEY (`check_id`) REFERENCES `Check_entity` (`check_id`);
+  ADD CONSTRAINT `receives_ibfk_2` FOREIGN KEY (`check_id`) REFERENCES `check_entity` (`check_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

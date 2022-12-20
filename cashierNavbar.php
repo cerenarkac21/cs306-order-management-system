@@ -37,10 +37,9 @@
   <body>
     <div class="cashierNavbar">
         <a href="get_payment.php">GET PAYMENT</a>
-        <a href="add_order.php">ADD ORDER</a>
-        <a href="admin.php">DELETE FOOD</a>
-        <a href="list_foods.php">LIST FOODSSSSS</a>
-        <a href="prep_time_filter.php">FILTER BY PREPARATION TIME</a>
+        <a href="add_online_customer.php">ADD ONLINE CUSTOMER</a>
+        <a href="online_customers.php">ADD ONLINE ORDER</a>
+
     </div>
     </body>
 </html>
