@@ -11,7 +11,8 @@ include "table_view.php";
 
 ?>
 
-
+<br><br>
+<br><br>
 
 <h3>
 	Take Table

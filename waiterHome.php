@@ -4,6 +4,5 @@
 
 
 <div class="waiter">
-    <?php include "waiterNavbar.php";?>
     <?php include "tables.php";?>
 </div>
