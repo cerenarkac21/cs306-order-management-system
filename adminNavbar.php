@@ -36,7 +36,8 @@
     
   <body>
     <div class="adminNavbar">
-    
+        <a href="insertWorkers.php">INSERT WORKER</a>
+        <a href="deleteWorkers.php">DELETE WORKER</a>
     </div>
     </body>
 </html>
