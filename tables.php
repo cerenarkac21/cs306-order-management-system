@@ -26,7 +26,7 @@ include "table_view.php";
 
 <?php
 
-$sql_command = "SELECT table_id from table_entity";
+$sql_command = "SELECT table_id from table_entity WHERE occupancy = 0";
 
 $myresult = mysqli_query($db, $sql_command);
 

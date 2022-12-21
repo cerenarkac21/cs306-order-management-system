@@ -12,6 +12,7 @@ cashier can get the payments from
 
 
 <div class="cashier">
+    <h3>Number of active checkkkks: </h3>
     <?php include "cashierNavbar.php";?>
-    <?php include "table_view.php";?>
+    <?php include "tables.php";?>
 </div>

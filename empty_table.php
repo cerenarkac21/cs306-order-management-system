@@ -9,30 +9,25 @@
 
 include "config.php";
 
-if (isset($_POST['ids'])) {
-  $selection_id = $_POST['ids'];
+if (isset($_POST['ids'])){
 
-  $total = 0;
-  $sql_statement1 = "SELECT f.* FROM foods f 
-                    INNER JOIN orders o ON f.fid = o.food_id 
-                    INNER JOIN receives r ON o.check_id = r.check_id 
-                    WHERE r.table_id = $selection_id;";
-  $result = mysqli_query($db, $sql_statement1);
-  while($row = mysqli_fetch_assoc($result)) {
+$selection_id = $_POST['ids'];
+echo $selection_id;
+$sql_statement1 = "SELECT f.* FROM foods f 
+                INNER JOIN orders o ON f.fid = o.food_id 
+                INNER JOIN receives r ON o.check_id = r.check_id 
+                WHERE r.table_id = $selection_id;";
+$result = mysqli_query($db, $sql_statement1);
+while($row = mysqli_fetch_assoc($result))
+{
     $fid = $row['fid'];
     $fname = $row['fname'];
     $fcategory = $row['fcategory'];
     $fprep = $row['fprep'];
     $fprice = $row['fprice'];
 
-    $total += $fprice;
-
     echo "<tr>" . "<th>" . $fid . "</th>" . "<th>" . $fname . "</th>" . "<th>" . $fcategory . "</th>" . "<th>" . $fprep . "</th>" . "<th>" . $fprice . "</th>" . "</tr>" ;
-  }
-  echo "Total cost is $total. Payment is done. Here is the details:";
-
-
-
+}
 
 
 
@@ -49,7 +44,6 @@ find the rows with the given check_id from the orders table.
 */
 
 }
-
 
 else
 {
