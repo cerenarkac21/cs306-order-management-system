@@ -1,3 +1,6 @@
+
+<!DOCTYPE html>
+<html>
 <head>
 	<title>Add Order to Table</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -22,15 +25,16 @@
 	<tbody>
 
     <?php
-        /* deneme */
+        
         $con = mysqli_connect("localhost","root","","foods_database");
 
         
         $brand_query = "SELECT * FROM foods";
         $query_run = mysqli_query($con, $brand_query);
         
-
+    
         $check_query = "SELECT check_id FROM receives_online WHERE userID = $userID";
+        $name_query = "SELECT username FROM online_customer WHERE userID = $userID";
         
         $myresult = mysqli_query($con, $check_query);
 
@@ -38,6 +42,15 @@
         while($id_rows = mysqli_fetch_assoc($myresult))
         {
             $check_id = $id_rows['check_id'];
+            #echo $check_id;
+        }
+        
+        $myresult_2 = mysqli_query($con, $name_query);
+
+        while($id_rows = mysqli_fetch_assoc($myresult_2))
+        {
+            $name = $id_rows['username'];
+            echo $name . "<br>\n";
         }
 
 

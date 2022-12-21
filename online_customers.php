@@ -22,7 +22,7 @@ include "config.php";
 
 <?php
 
-$sql_command = "SELECT userID from online_customer";
+$sql_command = "SELECT userID, username from online_customer";
 
 $myresult = mysqli_query($db, $sql_command);
 
@@ -30,7 +30,9 @@ $myresult = mysqli_query($db, $sql_command);
 while($id_rows = mysqli_fetch_assoc($myresult))
 {
 	$userID = $id_rows['userID'];
-	echo "<option value=$userID>". "#" . $userID. "</option>";
+	$username = $id_rows['username'];
+	
+	echo "<option value=$userID>". "#" . $userID. " ".$username . "</option>";
   
   
 }

@@ -41,16 +41,14 @@ input[type=submit]:hover {
         <div class="main">
 
           
-        <h3>Please enter the details of the new food</h3>
+        <h3>Please enter the details of the online customer:</h3>
            <form action="insertOnlineCustomer.php" method="POST"> 
-            <b>Customer name</b>: 
+            <b>Customer Name</b>: 
             <input type="text" id="username" name="username">
             <b>Address</b>: 
             <input type="text" id="address" name="address">
             <b>Telephone</b>: 
             <input type="text" id="online_cust_tel_no" name="online_cust_tel_no">
-            <b>Waits food?</b>: 
-            <input type="text" id="waiting_food" name="waiting_food">
 
             <input type="submit" value="Submit"> 
         </form> 
