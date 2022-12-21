@@ -6,5 +6,5 @@
 <div class="admin">
     <?php include "insertWorkers.php";?>
 
-
+    <?php include "deleteWorkers.php";?>
 </div>
