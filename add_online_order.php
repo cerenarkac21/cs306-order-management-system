@@ -96,7 +96,10 @@ foreach ($_POST['prodname'] as $key => $value)
 <?php 
 if (isset($_POST['selected'])) {
   $courier_id = $_POST['selected'];
+<<<<<<< Updated upstream
   echo $courier_id;
+=======
+>>>>>>> Stashed changes
   $insertqry="INSERT INTO match_with (courier_id, check_id)
   SELECT cou.courier_id, ord.check_id
   FROM courier cou
