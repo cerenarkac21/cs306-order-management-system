@@ -1,34 +1,3 @@
-<?php
-include 'config.php';
-if(isset($_POST['submit']))
-{
-$checked_array=$_POST['prodid'];
-foreach ($_POST['prodname'] as $key => $value) 
-{
-	if(in_array($_POST['prodname'][$key], $checked_array))
-	{
-	$prodname=$_POST['prodname'][$key];
-    $food_id = $_POST['food_id'][$key];
-	$prod_price= $_POST['prod_price'][$key];
-	$prod_qty= $_POST['prod_qty'][$key];
-    $userID= $_POST['userID'][$key];
-    $check_id= $_POST['check_id'][$key];
-    
-
-    echo "User: " . $userID . "  Check: " . $check_id . "  Food: " . $prodname . "  Quantity: ".  $prod_qty . "<br>\n";
-    #echo $table_id. " numaralı masaya: ". $prodname . " " . $prod_qty . " adet" . "<br>\n";
-	$insertqry="INSERT INTO orders (food_id, check_id, quantity) VALUES ('$food_id','$check_id','$prod_qty')";
-	$insertqry=mysqli_multi_query($db,$insertqry);
-	}
-	
-	
-}
-}
-#header('Location: index.php');
-?>
-
-
-
 <html> 
 <head>
 	<title>Tables List</title>
@@ -66,6 +35,37 @@ input[type=submit] {
 <body>
 
 <div align="center">
+
+
+<?php
+include 'config.php';
+if(isset($_POST['submit']))
+{
+$checked_array=$_POST['prodid'];
+foreach ($_POST['prodname'] as $key => $value) 
+{
+	if(in_array($_POST['prodname'][$key], $checked_array))
+	{
+	$prodname=$_POST['prodname'][$key];
+    $food_id = $_POST['food_id'][$key];
+	$prod_price= $_POST['prod_price'][$key];
+	$prod_qty= $_POST['prod_qty'][$key];
+    $userID= $_POST['userID'][$key];
+    $check_id= $_POST['check_id'][$key];
+    
+
+    echo "User: " . $userID . "  Check: " . $check_id . "  Food: " . $prodname . "  Quantity: ".  $prod_qty . "<br>\n";
+    #echo $table_id. " numaralı masaya: ". $prodname . " " . $prod_qty . " adet" . "<br>\n";
+	$insertqry="INSERT INTO orders (food_id, check_id, quantity) VALUES ('$food_id','$check_id','$prod_qty')";
+	$insertqry=mysqli_multi_query($db,$insertqry);
+
+	}
+	
+	
+}
+}
+#header('Location: index.php');
+?>
 	
 <form method="post">
   <table>
@@ -95,8 +95,16 @@ input[type=submit] {
 
 <?php 
 if (isset($_POST['selected'])) {
-  $selectedId = $_POST['selected'];
-  echo $selectedId;
+  $courier_id = $_POST['selected'];
+  echo $courier_id;
+  $insertqry="INSERT INTO match_with (courier_id, check_id)
+  SELECT cou.courier_id, ord.check_id
+  FROM courier cou
+  JOIN orders ord ON ord.check_id = (SELECT MAX(check_id) FROM check_entity)
+  WHERE cou.courier_id = $courier_id";
+	$insertqry=mysqli_multi_query($db,$insertqry);
+        
+  
 }
 ?>
 </div>
