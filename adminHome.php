@@ -1,10 +1,11 @@
+<!DOCTYPE html>
+<html>
 <head>
-    <link rel="stylesheet" href="style.css">
+    <title>Login</title>
 </head>
-
-
-<div class="admin">
-    <?php include "insertWorkers.php";?>
-
-    <?php include "deleteWorkers.php";?>
-</div>
+<body>
+    
+    <h1>Login Here</h1>
+    
+</body>
+</html>
