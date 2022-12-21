@@ -162,7 +162,7 @@ body {font-family: Verdana, sans-serif;}
 						else {
 							$color = $occupied;
 						  }
-					 	echo $color; ?>" > 7</li>
+					 	echo $color; ?>" > 6</li>
 
 
 <li style="background-color: <?php 
