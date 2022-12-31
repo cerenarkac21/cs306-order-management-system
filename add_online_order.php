@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 <html> 
 <head>
 	<title>Tables List</title>
@@ -38,8 +36,6 @@ input[type=submit] {
 
 <div align="center">
 
-
->>>>>>> Stashed changes
 <?php
 include 'config.php';
 if(isset($_POST['submit']))
@@ -61,10 +57,6 @@ foreach ($_POST['prodname'] as $key => $value)
     #echo $table_id. " numaralı masaya: ". $prodname . " " . $prod_qty . " adet" . "<br>\n";
 	$insertqry="INSERT INTO orders (food_id, check_id, quantity) VALUES ('$food_id','$check_id','$prod_qty')";
 	$insertqry=mysqli_multi_query($db,$insertqry);
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 	}
 	
 	
@@ -72,10 +64,8 @@ foreach ($_POST['prodname'] as $key => $value)
 }
 #header('Location: index.php');
 ?>
-<<<<<<< Updated upstream
 
 <html> <a href="online_customers.php">Return to the list of online customers.</a> </html>
-=======
 	
 <form method="post">
   <table>
@@ -124,5 +114,3 @@ if (isset($_POST['selected'])) {
 	<a href="online_customers.php">Return to the list of online customers.</a> 
 	
 </html>
-
->>>>>>> Stashed changes
