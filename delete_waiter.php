@@ -3,7 +3,12 @@
     </head>
 
 
-<?php include "navbar.php";?>
+    <div class="navbar">
+            <a href="waiter_insertion.php">INSERT WAITER</a>
+            <a href="delete_waiter.php">DELETE WAITER</a>
+            <a href="update_waiter.php">UPDATE PASSWORD</a>
+            <a href="adminHome.php">GO BACK TO ADMIN PAGE</a>
+          </div>
 
 <?php 
 
@@ -12,7 +17,7 @@ include "config.php";
 include "list_waiter.php";
 
 ?>
-<h4>Please choose which food to delete:</h4>
+<h4>Please choose which waiter to delete:</h4>
 
 <form action="deletingFileForWaiter.php" method="POST">
 <select name="ids">
@@ -22,7 +27,7 @@ include "list_waiter.php";
 
 <?php
 
-$sql_command = "SELECT waiter_id, waiter_name_surname FROM waiter";
+$sql_command = "SELECT * FROM waiter";
 
 $myresult = mysqli_query($db, $sql_command);
 

@@ -10,7 +10,7 @@ $sql_statement = "DELETE FROM waiter WHERE waiter_id = $selection_id";
 
 $result = mysqli_query($db, $sql_statement);
 
-header ("Location: admin.php");
+header ("Location: delete_waiter.php");
 
 }
 

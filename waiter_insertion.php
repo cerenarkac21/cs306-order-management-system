@@ -1,6 +1,15 @@
 <html>
     <head>
     <link rel="stylesheet" href="style.css">
+
+    <div class="navbar">
+            <a href="waiter_insertion.php">INSERT WAITER</a>
+            <a href="delete_waiter.php">DELETE WAITER</a>
+            <a href="update_waiter.php">UPDATE PASSWORD</a>
+            <a href="adminHome.php">GO BACK TO ADMIN PAGE</a>
+          </div>
+
+
     <style>
 
 input[type=text], select {
@@ -58,10 +67,7 @@ input[type=submit]:hover {
     </head>
     
       <body>
-        <button onclick=handleClick() class="button button3">Go to admin home</button>
-        <script>
-          function handleClick() {window.location.href = "adminHome.php";}
-        </script>
+
         <div class="main">
         <h3>Please enter the details of the new waiter</h3>
            <form method="POST"> 
