@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Waiter Panel</title>
+	<title>Online Orders</title>
 
 <style>
 table {
@@ -28,14 +28,20 @@ tr:nth-child(even) {
 
 	<table>
 
-<tr> <th> COURIER_ID </th> <th> CHECK_ID </th> <th>
+<tr> <th> CHECK ID </th> <th> ORDER TIME </th> <th> CUSTOMER NAME </th> <th> ADDRESS </th> <th> CONTACT NUMBER </th> </tr>
 
 
 <?php
 
 include "config.php";
 
-$sql_statement = "SELECT * FROM match_with";
+$sql_statement = "SELECT online_customer.* , match_with.*
+FROM online_customer
+JOIN receives_online ON online_customer.userID = receives_online.userID
+JOIN match_with ON receives_online.check_id = match_with.check_id
+ORDER BY match_with.check_id DESC;
+";
+#WHERE match_with.courier_id = 8 bunu ekle
 
 $result = mysqli_query($db, $sql_statement);
 
@@ -43,9 +49,13 @@ while($row = mysqli_fetch_assoc($result))
 {
   $courier_id = $row['courier_id'];
   $check_id = $row['check_id'];
+  $address = $row['address'];
+  $username = $row['username'];
+  $tel = $row['online_cust_tel_no'];
+  $order_time = $row['order_time'];
+  
 
-
-	echo "<tr>" . "<th>" . $courier_id . "</th>" . "<th>" . $check_id . "</th>" . "<th>";
+	echo "<tr>" .  "<th>" . $check_id . "</th>" . "<th>" . $order_time . "</th>" . "<th>" . $username  . "</th>" . "<th>" . $address  . "</th>". "<th>" . $tel  . "</th>" . "<tr>";
 }
 
 ?>

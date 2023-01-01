@@ -18,7 +18,17 @@
         // Check if a matching row was found
         if (mysqli_num_rows($result) > 0) {
             // A matching row was found
-            header ("Location: deleteOnlineOrder_courier.php");
+            $query2 = "SELECT courier_id FROM courier WHERE pssword='$pssword'";
+            $myresult = mysqli_query($db, $query2);
+
+
+            while($id_rows = mysqli_fetch_assoc($myresult))
+            {
+                $courier_id = $id_rows['courier_id'];
+                
+            }
+
+            header ("Location: deleteOnlineOrder_courier.php?id=$courier_id");
         } 
         else {
         // No matching row was found, so the input value does not exist in the corresponding table
