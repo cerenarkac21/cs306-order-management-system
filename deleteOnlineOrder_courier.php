@@ -30,7 +30,7 @@ while($id_rows = mysqli_fetch_assoc($myresult))
 {
 	$courier_id = $id_rows['courier_id'];
 	$check_id = $id_rows['check_id'];
-	echo "<option value=$courier_id>". "#" . $courier_id. " " . $check_id . "</option>";
+	echo "<option value=$check_id>". "#" . $courier_id. " " . $check_id . "</option>";
 }
 
 ?>
