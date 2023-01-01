@@ -1,6 +1,6 @@
 <html> 
 <head>
-	<title>Tables List</title>
+	<title>Courier Selection</title>
 
 <style>
 table {
@@ -87,6 +87,7 @@ foreach ($_POST['prodname'] as $key => $value)
       <td>
         <input type="radio" name="selected" value="<?php echo $row['courier_id']; ?>">
       </td>
+      <input type="hidden" name="check_id" value="<?= $check_id; ?>">
     </tr>
     <?php endforeach; ?>
   </table>
@@ -94,15 +95,14 @@ foreach ($_POST['prodname'] as $key => $value)
 </form>
 
 <?php 
-if (isset($_POST['selected'])) {
+if (isset($_POST['selected']) and isset($_POST['check_id'])) {
   $courier_id = $_POST['selected'];
-  $insertqry="INSERT INTO match_with (courier_id, check_id)
-  SELECT cou.courier_id, ord.check_id
-  FROM courier cou
-  JOIN orders ord ON ord.check_id = (SELECT MAX(check_id) FROM check_entity)
-  WHERE cou.courier_id = $courier_id";
-	$insertqry=mysqli_multi_query($db,$insertqry);
-        
+  $check_id = $_POST['check_id'];
+  
+  echo "The check #" . $check_id . " has ben assigned to courier " . $courier_id ;
+  $insertqry= "INSERT INTO match_with (courier_id, check_id)
+  VALUES ($courier_id, $check_id);";
+	$insertqry2=mysqli_query($db,$insertqry);
   
 }
 ?>

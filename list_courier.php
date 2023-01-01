@@ -28,11 +28,8 @@ tr:nth-child(even) {
 
 	<table>
 
-<<<<<<< Updated upstream
+
 <tr> <th> ID </th> <th> NAME </th> <th>TEL</th> <th>PASSWORD</th> </tr> 
-=======
-<tr> <th> ID </th> <th> NAME </th> <th>CATEGORY</th> <th>PREP TIME</th> <th>PRICE</th> </tr> 
->>>>>>> Stashed changes
 
 <?php
 

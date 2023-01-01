@@ -8,7 +8,6 @@
     <h1>Login Here</h1>
 
     <?php
-    
 
     include "config.php";
 
@@ -19,7 +18,6 @@
         // Check if a matching row was found
         if (mysqli_num_rows($result) > 0) {
             // A matching row was found
-            
             header ("Location: deleteOnlineOrder_courier.php");
         } 
         else {
@@ -34,6 +32,7 @@
         <label for='pssword'>password</label>
         <input type='pssword' name='pssword' value="<?= htmlspecialchars($pssword ?? "") ?>">
         <button>Log in</button>
+    </form>
     
 </body>
 </html>

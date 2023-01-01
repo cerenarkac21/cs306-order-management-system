@@ -3,7 +3,7 @@
 <a href="javascript:location.reload()">Refresh</a>
 <a href="javascript:location.reload()"></a>
 <head>
-	<title>Update Waiter Password</title>
+	<title>Update Cashier Password</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
   <style>
@@ -31,22 +31,22 @@
 <body>
 
 <div class="navbar">
-            <a href="waiter_insertion.php">INSERT WAITER</a>
-            <a href="delete_waiter.php">DELETE WAITER</a>
-            <a href="update_waiter.php">UPDATE PASSWORD</a>
+            <a href="cashier_insertion.php">INSERT CASHIER</a>
+            <a href="delete_cas.php">DELETE CASHIER</a>
+            <a href="update_cashier.php">UPDATE PASSWORD</a>
             <a href="adminHome.php">GO BACK TO ADMIN PAGE</a>
           </div>
 <div class="container">
 
 
 
-	<h4>Update Waiter Password</h4>
+	<h4>Update Cashier Password</h4>
 <hr>
-<form method="post" action="update_waiter_password.php">
+<form method="post" action="update_cashier_password.php">
 <table class="table table-bordered">
 	<thead>
 		<tr>
-			<th>Waiter ID</th>
+			<th>Cashier ID</th>
 			<th>Name & Surname</th>
 			<th>Telephone</th>
             <th>Old Password</th>
@@ -68,7 +68,7 @@
           }
 
 
-        $brand_query = "SELECT * from waiter;";
+        $brand_query = "SELECT * from cashier;";
         $query_run = mysqli_query($con, $brand_query);
         
     
@@ -84,16 +84,16 @@
             {
                 ?>
                 <tr>
-                <td><?= $brand['waiter_id']; ?>
-                    <input type="hidden" name="waiter_id[]" value="<?= $brand['waiter_id']; ?>">
+                <td><?= $brand['cashier_id']; ?>
+                    <input type="hidden" name="cashier_id[]" value="<?= $brand['cashier_id']; ?>">
                 </td>
 
-                <td><?= $brand['waiter_name_surname']; ?>
-                    <input type="hidden" name="waiter_name_surname[]" value="<?= $brand['waiter_name_surname']; ?>">
+                <td><?= $brand['cashier_name_surname']; ?>
+                    <input type="hidden" name="cashier_name_surname[]" value="<?= $brand['cashier_name_surname']; ?>">
                 </td>
 
-                <td><?= $brand['waiter_tel_no']; ?>
-                    <input type="hidden" name="waiter_tel_no[]" value="<?= $brand['waiter_tel_no']; ?>">
+                <td><?= $brand['cashier_tel_no']; ?>
+                    <input type="hidden" name="cashier_tel_no[]" value="<?= $brand['cashier_tel_no']; ?>">
                 </td>
 
 
@@ -103,7 +103,7 @@
 
 
 
-                <td><input type="checkbox" name="prodid[]" value="<?= $brand['waiter_id']; ?>"></td>
+                <td><input type="checkbox" name="prodid[]" value="<?= $brand['cashier_id']; ?>"></td>
 
 
                 <td><input type="number" value=0000 name="updated_password[]" class="form-control"></td>

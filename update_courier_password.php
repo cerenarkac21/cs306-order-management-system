@@ -4,21 +4,20 @@ if(isset($_POST['submit']))
 {
 
 $checked_array=$_POST['prodid'];
-foreach ($_POST['waiter_id'] as $key => $value) 
+foreach ($_POST['courier_id'] as $key => $value) 
 {
-	if(in_array($_POST['waiter_id'][$key], $checked_array))
+	if(in_array($_POST['courier_id'][$key], $checked_array))
 	{
 
-	$waiter_id= $_POST['waiter_id'][$key];
+	$courier_id= $_POST['courier_id'][$key];
 	
 	$updated_password= $_POST['updated_password'][$key];
-	
-	echo $waiter_id . " " . $updated_password;
+
 
 	
-	$updateqry="UPDATE waiter
+	$updateqry="UPDATE courier
 	SET pssword = $updated_password
-	WHERE waiter_id = $waiter_id;
+	WHERE courier_id = $courier_id;
 	;";
 	$update=mysqli_multi_query($db,$updateqry);
 	}

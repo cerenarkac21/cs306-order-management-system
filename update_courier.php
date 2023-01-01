@@ -31,22 +31,23 @@
 <body>
 
 <div class="navbar">
-            <a href="waiter_insertion.php">INSERT WAITER</a>
-            <a href="delete_waiter.php">DELETE WAITER</a>
-            <a href="update_waiter.php">UPDATE PASSWORD</a>
+            <a href="courier_insertion.php">INSERT COURIER</a>
+            <a href="delete_courier.php">DELETE COURIER</a>
+            <a href="update_courier.php">UPDATE PASSWORD</a>
             <a href="adminHome.php">GO BACK TO ADMIN PAGE</a>
           </div>
+
 <div class="container">
 
 
 
-	<h4>Update Waiter Password</h4>
+	<h4>Update Courier Password</h4>
 <hr>
-<form method="post" action="update_waiter_password.php">
+<form method="post" action="update_courier_password.php">
 <table class="table table-bordered">
 	<thead>
 		<tr>
-			<th>Waiter ID</th>
+			<th>Courier ID</th>
 			<th>Name & Surname</th>
 			<th>Telephone</th>
             <th>Old Password</th>
@@ -68,7 +69,7 @@
           }
 
 
-        $brand_query = "SELECT * from waiter;";
+        $brand_query = "SELECT * from courier;";
         $query_run = mysqli_query($con, $brand_query);
         
     
@@ -84,16 +85,16 @@
             {
                 ?>
                 <tr>
-                <td><?= $brand['waiter_id']; ?>
-                    <input type="hidden" name="waiter_id[]" value="<?= $brand['waiter_id']; ?>">
+                <td><?= $brand['courier_id']; ?>
+                    <input type="hidden" name="courier_id[]" value="<?= $brand['courier_id']; ?>">
                 </td>
 
-                <td><?= $brand['waiter_name_surname']; ?>
-                    <input type="hidden" name="waiter_name_surname[]" value="<?= $brand['waiter_name_surname']; ?>">
+                <td><?= $brand['courier_name_surname']; ?>
+                    <input type="hidden" name="courier_name_surname[]" value="<?= $brand['courier_name_surname']; ?>">
                 </td>
 
-                <td><?= $brand['waiter_tel_no']; ?>
-                    <input type="hidden" name="waiter_tel_no[]" value="<?= $brand['waiter_tel_no']; ?>">
+                <td><?= $brand['courier_tel_no']; ?>
+                    <input type="hidden" name="courier_tel_no[]" value="<?= $brand['courier_tel_no']; ?>">
                 </td>
 
 
@@ -103,7 +104,7 @@
 
 
 
-                <td><input type="checkbox" name="prodid[]" value="<?= $brand['waiter_id']; ?>"></td>
+                <td><input type="checkbox" name="prodid[]" value="<?= $brand['courier_id']; ?>"></td>
 
 
                 <td><input type="number" value=0000 name="updated_password[]" class="form-control"></td>
