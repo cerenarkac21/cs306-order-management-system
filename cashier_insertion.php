@@ -1,6 +1,12 @@
 <html>
     <head>
     <link rel="stylesheet" href="style.css">
+    <div class="navbar">
+            <a href="cashier_insertion.php">INSERT CASHIER</a>
+            <a href="delete_cashier.php">DELETE CASHIER</a>
+            <a href="update_cashier.php">UPDATE PASSWORD</a>
+            <a href="adminHome.php">GO BACK TO ADMIN PAGE</a>
+          </div>
     <style>
 
 input[type=text], select {
@@ -58,10 +64,7 @@ input[type=submit]:hover {
     </head>
     
       <body>
-        <button onclick=handleClick() class="button button3">Go to admin home</button>
-        <script>
-          function handleClick() {window.location.href = "adminHome.php";}
-        </script>
+      
         <div class="main">
         <h3>Please enter the details of the new cashier</h3>
            <form method="POST"> 
@@ -93,7 +96,7 @@ else
 
     $sql_statement = "INSERT INTO cashier (cashier_name_surname, cashier_tel_no, pssword) VALUES ('$cashier_name_surname','$cashier_tel_no','$pssword')"; 
     $result = mysqli_query($db, $sql_statement);
-    echo "inserted into the table";
+    echo "A new cashier has been registered.";
 }
 
 ?>

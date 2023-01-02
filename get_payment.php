@@ -6,7 +6,7 @@
 <?php 
 
 include "config.php";
-
+include "cashierNavbar.php";
 include "table_view.php";
 
 ?>

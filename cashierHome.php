@@ -15,7 +15,9 @@
 cashier can get the payments from 
     the in-cite,
     the to-go customers.</h4>
+    <a href="javascript:location.reload()">Please chick here after any change!</a>
     <h3>Table View: </h3>
+
 
     <?php include "tables.php";?>
 </div>

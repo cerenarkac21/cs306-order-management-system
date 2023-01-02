@@ -44,7 +44,7 @@ if (isset($_POST['mintime'])){
   $maxtime = $_POST['maxtime']; 
   echo "<h2><b>"."Foods that have preparation time between: ".$mintime."-".$maxtime."</b></h2>";
   
-  $sql_statement = "SELECT * FROM foods WHERE fprep >= $mintime AND fprep <= $maxtime";
+  $sql_statement = "SELECT * FROM foods WHERE fprep >= $mintime AND fprep <= $maxtime ORDER BY fprep ASC";
   
 
   $result = mysqli_query($db, $sql_statement);

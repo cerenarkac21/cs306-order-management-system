@@ -6,9 +6,7 @@
 
 
 
-<?php include "navbar.php";?>
-
-
+<?php include "waiterNavbar.php";?>
 <style>
 table {
   font-family: arial, sans-serif;
@@ -34,18 +32,21 @@ tr:nth-child(even) {
 
 	<table>
 
-<tr> <th> ID </th> <th> NAME </th> <th>CATEGORY</th> <th>PREP TIME</th> <th>PRICE</th></tr> 
+<tr> <th> ID </th> <th> NAME </th> <th>CATEGORY</th> <th>PREP TIME</th> </tr> 
 
 <?php
 
 include "config.php";
 
-if (isset($_POST['ids'])){
+if (isset($_POST['mintime'])){
 
-  $selection_id = $_POST['ids'];
-  echo "<h2><b>"."Showing all: ".$selection_id."</b></h2>";
-  $sql_statement = "SELECT * FROM foods WHERE fcategory = '$selection_id'";
+  $mintime = $_POST['mintime']; 
+  $maxtime = $_POST['maxtime']; 
+  echo "<h2><b>"."Foods that have preparation time between: ".$mintime."-".$maxtime."</b></h2>";
   
+  $sql_statement = "SELECT * FROM foods WHERE fprep >= $mintime AND fprep <= $maxtime ORDER BY fprep ASC";
+  
+
   $result = mysqli_query($db, $sql_statement);
 
   while($row = mysqli_fetch_assoc($result))
@@ -55,7 +56,7 @@ if (isset($_POST['ids'])){
     $fcategory = $row['fcategory'];
     $fprep = $row['fprep'];
     $fprice = $row['fprice'];
-    
+
 
     echo "<tr>" . "<th>" . $fid . "</th>" . "<th>" . $fname . "</th>" . "<th>" . $fcategory . "</th>" . "<th>" . $fprep . "</th>" . "<th>" . $fprice . "</th>" . "</tr>" ;
   }
@@ -65,12 +66,7 @@ if (isset($_POST['ids'])){
 ?>
 
 </table>
-
-
-
 </div>
 
 </body>
 </html>
-
-

@@ -36,9 +36,11 @@
     
   <body>
     <div class="waiterNavbar">
-        <a href="tables.php">TABLES</a>
-        <a href="admin.php">CHANGE ORDER</a>
-        <a href="list_foods.php">LIST FOODS</a>
+        <a href="waiterHome.php">TABLES</a>
+        <a href="select_table_check.php">CHANGE ORDER</a>
+        <a href="list_food_waiter.php">LIST FOODS</a>
+        <a href="select_dish_waiter.php">FILTER BY CATEGORY</a>
+        <a href="prep_time_filter_waiter.php">FILTER BY PREPARATION TIME</a>
     </div>
     </body>
 </html>

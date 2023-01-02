@@ -36,6 +36,8 @@
     
   <body>
     <div class="cashierNavbar">
+    
+        <a href="cashierHome.php">TAKE TABLE</a>
         <a href="get_payment.php">GET PAYMENT</a>
         <a href="add_online_customer.php">ADD ONLINE CUSTOMER</a>
         <a href="online_customers.php">ADD ONLINE ORDER</a>

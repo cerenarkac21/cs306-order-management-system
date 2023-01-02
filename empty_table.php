@@ -3,7 +3,7 @@
 
 	<table>
 
-    <tr> <th> ID </th> <th> NAME </th> <th>CATEGORY</th> <th>PREP TIME</th> <th>PRICE</th> </tr> 
+    <tr> <th> ID </th> <th> NAME </th> <th>CATEGORY</th> <th>PRICE</th> <th>QUANTITY</th> <th>TOTAL PRICE</th> </tr> 
 
 <?php 
 
@@ -13,21 +13,24 @@ if (isset($_POST['ids'])) {
   $selection_id = $_POST['ids'];
 
   $total = 0;
-  $sql_statement1 = "SELECT f.* FROM foods f 
-                    INNER JOIN orders o ON f.fid = o.food_id 
-                    INNER JOIN receives r ON o.check_id = r.check_id 
-                    WHERE r.table_id = $selection_id;";
+  $sql_statement1 = "SELECT f.*, o.quantity, (f.fprice * o.quantity) as total_price
+  FROM foods f
+  INNER JOIN orders o ON f.fid = o.food_id 
+  INNER JOIN receives r ON o.check_id = r.check_id 
+  WHERE r.table_id = $selection_id
+  ";
   $result = mysqli_query($db, $sql_statement1);
   while($row = mysqli_fetch_assoc($result)) {
     $fid = $row['fid'];
     $fname = $row['fname'];
     $fcategory = $row['fcategory'];
-    $fprep = $row['fprep'];
+    $fqty = $row['quantity'];
     $fprice = $row['fprice'];
+    $total_price = $row['total_price'];
 
-    $total += $fprice;
+    $total += $total_price;
 
-    echo "<tr>" . "<th>" . $fid . "</th>" . "<th>" . $fname . "</th>" . "<th>" . $fcategory . "</th>" . "<th>" . $fprep . "</th>" . "<th>" . $fprice . "</th>" . "</tr>" ;
+    echo "<tr>" . "<th>" . $fid . "</th>" . "<th>" . $fname . "</th>" . "<th>" . $fcategory . "</th>" . "<th>" . $fprice . "</th>" . "<th>" . $fqty . "</th>". "<th>" . $total_price . "</th>" . "</tr>" ;
   }
   echo "Total cost is $total. Payment is done. Here is the details:";
 
@@ -60,5 +63,8 @@ else
 
 ?>
 
+
+
 </table>
+<a href="cashierHome.php">Return to the panel.</a>
 </div>

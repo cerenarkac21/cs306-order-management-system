@@ -3,7 +3,12 @@
     </head>
 
 
-<?php include "navbar.php";?>
+    <div class="navbar">
+            <a href="courier_insertion.php">INSERT COURIER</a>
+            <a href="delete_courier.php">DELETE COURIER</a>
+            <a href="update_courier.php">UPDATE PASSWORD</a>
+            <a href="adminHome.php">GO BACK TO ADMIN PAGE</a>
+          </div>
 
 <?php 
 

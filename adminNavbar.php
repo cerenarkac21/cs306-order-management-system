@@ -38,6 +38,10 @@
     <div class="adminNavbar">
         <a href="insertWorkers.php">INSERT WORKER</a>
         <a href="deleteWorkers.php">DELETE WORKER</a>
+        <a href="food_insertion.php">CHANGE MENU</a>
+        <a href="cashierHome.php">CASHIER PAGE</a>
+        <a href="waiterHome.php">WAITER PAGE</a>
+        <a href="deleteOnlineOrder_admin.php">COURIER PAGE</a>
     </div>
     </body>
 </html>

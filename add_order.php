@@ -3,6 +3,20 @@ include 'config.php';
 if(isset($_POST['submit']))
 {
 $checked_array=$_POST['prodid'];
+
+
+$check_query = "SELECT MAX(check_id) as last_check_id FROM check_entity";
+			
+$myresult = mysqli_query($db, $check_query);
+
+
+while($id_rows = mysqli_fetch_assoc($myresult))
+{
+	$check_id = $id_rows['last_check_id'];
+	
+}
+
+
 foreach ($_POST['prodname'] as $key => $value) 
 {
 	if(in_array($_POST['prodname'][$key], $checked_array))
@@ -12,7 +26,6 @@ foreach ($_POST['prodname'] as $key => $value)
 	$prod_price= $_POST['prod_price'][$key];
 	$prod_qty= $_POST['prod_qty'][$key];
     $table_id= $_POST['table_id'][$key];
-    $check_id= $_POST['check_id'][$key];
     
 
     echo "Table: " . $table_id . "  Check: " . $check_id . "  Food: " . $prodname . "  Quantity: ".  $prod_qty . "<br>\n";
@@ -27,4 +40,4 @@ foreach ($_POST['prodname'] as $key => $value)
 #header('Location: index.php');
 ?>
 
-<html> <a href="tables.php">Masa menüsüne dönmek için tıklayınız.</a> </html>
+<a href="javascript:history.go(-2)">Return to the panel</a>

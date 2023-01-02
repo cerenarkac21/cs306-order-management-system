@@ -110,6 +110,5 @@ if (isset($_POST['selected']) and isset($_POST['check_id'])) {
 
 
 </body>
-	<a href="online_customers.php">Return to the list of online customers.</a> 
-	
+
 </html>

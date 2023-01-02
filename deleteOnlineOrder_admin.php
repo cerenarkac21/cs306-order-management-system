@@ -14,8 +14,9 @@ $courier_id = $_GET['id'];
 ?>
   <body>
     <div class="waiterNavbar">
-        <a href="deleteOnlineOrder_courier.php?id=<?php echo $courier_id ?>">CURRENT ORDERS</a>
-        <a href="prev_order_courier.php?id=<?php echo $courier_id ?>">PREVIOUS ORDERS</a>
+        <a href="adminHome.php">RETURN TO ADMIN PANEL</a>
+        <a href="deleteOnlineOrder_admin.php">CURRENT ORDERS</a>
+        <a href="prev_order_admin.php">PREVIOUS ORDERS</a>
     </div>
     </body>
 
@@ -47,11 +48,13 @@ tr:nth-child(even) {
 
 
 <a href="javascript:location.reload()">Please chick here after any change!</a>
+
 <div align="center">
+
 
 	<table>
 
-<tr> <th> CHECK ID </th> <th> ORDER TIME </th> <th> CUSTOMER NAME </th> <th> ADDRESS </th> <th> CONTACT NUMBER </th> </tr>
+<tr> <th> COURIER ID </th><th> CHECK ID </th> <th> ORDER TIME </th> <th> CUSTOMER NAME </th> <th> ADDRESS </th> <th> CONTACT NUMBER </th> </tr>
 
 
 <?php
@@ -62,7 +65,7 @@ $sql_statement = "SELECT online_customer.* , match_with.*
 FROM online_customer
 JOIN receives_online ON online_customer.userID = receives_online.userID
 JOIN match_with ON receives_online.check_id = match_with.check_id
-WHERE match_with.courier_id = $courier_id AND receives_online.completed = 0
+WHERE receives_online.completed = 0
 ORDER BY match_with.order_time DESC;
 ";
 
@@ -79,7 +82,7 @@ while($row = mysqli_fetch_assoc($result))
   $order_time = $row['order_time'];
   
 
-	echo "<tr>" .  "<th>" . $check_id . "</th>" . "<th>" . $order_time . "</th>" . "<th>" . $username  . "</th>" . "<th>" . $address  . "</th>". "<th>" . $tel  . "</th>" . "<tr>";
+	echo "<tr>" .  "<th>" . $courier_id . "</th>".  "<th>" . $check_id . "</th>" . "<th>" . $order_time . "</th>" . "<th>" . $username  . "</th>" . "<th>" . $address  . "</th>". "<th>" . $tel  . "</th>" . "<tr>";
 }
 
 ?>
@@ -89,22 +92,7 @@ while($row = mysqli_fetch_assoc($result))
 
 </body>
 </html>
-<h2>Welcome
-<?php
-$sql_statement2 = "SELECT courier_name_surname FROM courier WHERE courier_id = $courier_id;";
-
-
-$result = mysqli_query($db, $sql_statement2);
-
-while($row2 = mysqli_fetch_assoc($result))
-{
-  $courier_name_surname = $row2['courier_name_surname'];
-
-
-
-	echo $courier_name_surname;
-}
-?>!
+<h2>Welcome ADMIN!
 </h2>
 
 
@@ -121,7 +109,7 @@ while($row2 = mysqli_fetch_assoc($result))
 $sql_command = "SELECT *
 FROM match_with mw
 INNER JOIN receives_online ro ON mw.check_id = ro.check_id
-WHERE mw.courier_id = $courier_id AND ro.completed=0;
+WHERE ro.completed=0;
 ";
 
 $myresult = mysqli_query($db, $sql_command);

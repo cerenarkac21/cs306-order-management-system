@@ -33,7 +33,6 @@ tr:nth-child(even) {
 <?php
 
 include "config.php";
-include "waiterNavbar.php";
 $sql_statement = "SELECT fcategory FROM `foods` GROUP BY fcategory";
 $result = mysqli_query($db, $sql_statement);
 

@@ -1,4 +1,5 @@
 <div class="navbar">
+            <a href="adminHome.php">RETURN TO ADMIN PANEL</a>
             <a href="food_insertion.php">INSERT FOOD</a>
             <a href="admin.php">DELETE FOOD</a>
             <a href="list_foods.php">LIST FOODS</a>

@@ -5,7 +5,7 @@
 <?php 
 
 
-include "navbar.php";
+include "waiterNavbar.php";
 include "config.php";
 
 include "menu.php";
@@ -15,7 +15,7 @@ include "menu.php";
 
 <h4>Please choose a food category:</h4>
 
-<form action="list_foods_select_cat.php" method="POST">
+<form action="list_foods_select_cat_waiter.php" method="POST">
 <select name="ids">
 
 <?php
