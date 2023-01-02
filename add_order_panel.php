@@ -25,7 +25,7 @@
 	<tbody>
 
     <?php
-        /* deneme */
+ 
         $con = mysqli_connect("localhost","root","","foods_database");
 
         

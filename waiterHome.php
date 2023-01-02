@@ -3,6 +3,9 @@
 </head>
 
 
+<?php include "cashierNavbar.php";?>
+
 <div class="waiter">
     <?php include "tables.php";?>
 </div>
+

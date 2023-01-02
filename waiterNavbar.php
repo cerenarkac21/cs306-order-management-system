@@ -36,9 +36,9 @@
     
   <body>
     <div class="waiterNavbar">
-        <a href="select_dish.php">CREATE CHECK</a>
-        <a href="admin.php">DELETE FOOD</a>
-        <a href="list_foods.php">LIST FOODSSSSS</a>
+        <a href="tables.php">TABLES</a>
+        <a href="admin.php">CHANGE ORDER</a>
+        <a href="list_foods.php">LIST FOODS</a>
     </div>
     </body>
 </html>
