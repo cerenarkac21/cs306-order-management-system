@@ -34,10 +34,5 @@
       </style>
   </head>
     
-  <body>
-    <div class="waiterNavbar">
-        <a href="deleteOnlineOrder_courier.php">CURRENT ORDERS</a>
-        <a href="admin.php">PREVIOUS ORDERS</a>
-    </div>
-    </body>
+
 </html>

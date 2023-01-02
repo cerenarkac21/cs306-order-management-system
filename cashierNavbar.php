@@ -39,6 +39,7 @@
         <a href="get_payment.php">GET PAYMENT</a>
         <a href="add_online_customer.php">ADD ONLINE CUSTOMER</a>
         <a href="online_customers.php">ADD ONLINE ORDER</a>
+        <a href="select_online_check.php">UPDATE ONLINE CHECK</a>
 
     </div>
     </body>

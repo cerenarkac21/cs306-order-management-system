@@ -56,11 +56,12 @@ tr:nth-child(even) {
 
 include "config.php";
 
+
 $sql_statement = "SELECT online_customer.* , match_with.*
 FROM online_customer
 JOIN receives_online ON online_customer.userID = receives_online.userID
 JOIN match_with ON receives_online.check_id = match_with.check_id
-WHERE match_with.courier_id = $courier_id AND receives_online.completed = 0
+WHERE match_with.courier_id = $courier_id AND receives_online.completed = 1
 ORDER BY match_with.order_time DESC;
 ";
 
@@ -85,9 +86,7 @@ while($row = mysqli_fetch_assoc($result))
 </table>
 </div>
 
-</body>
-</html>
-<h2>Welcome
+<h4>Showing past orders for: 
 <?php
 $sql_statement2 = "SELECT courier_name_surname FROM courier WHERE courier_id = $courier_id;";
 
@@ -102,38 +101,9 @@ while($row2 = mysqli_fetch_assoc($result))
 
 	echo $courier_name_surname;
 }
-?>!
-</h2>
-
-
-<h4>Please choose the check number to mark the order as arrived:</h4>
-
-<form action="deletingFileForOnlineOrder.php" method="POST">
-<select name="ids">
-
-
-
-
-<?php
-
-$sql_command = "SELECT *
-FROM match_with mw
-INNER JOIN receives_online ro ON mw.check_id = ro.check_id
-WHERE mw.courier_id = $courier_id AND ro.completed=0;
-";
-
-$myresult = mysqli_query($db, $sql_command);
-
-
-while($id_rows = mysqli_fetch_assoc($myresult))
-{
-	$courier_id = $id_rows['courier_id'];
-	$check_id = $id_rows['check_id'];
-	echo "<option value=$check_id>". "#" . $check_id . "</option>";
-}
-
 ?>
-</select>
+</h4>
 
-<button>SELECT</button>
-</form>
+</body>
+</html>
+
