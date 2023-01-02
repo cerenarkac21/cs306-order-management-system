@@ -39,5 +39,5 @@
         send_msg($user_msg, $params['sender']);
     }
 	//Redirects to relative chat page, whether it is client or admin
-	header('location: http://localhost/cs306-order-management-system' . $params['sender'] .'_chat.php');
+	header('location: http://localhost/cs306-order-management-system/' . $params['sender'] .'_chat.php');
 ?>

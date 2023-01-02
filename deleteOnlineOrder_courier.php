@@ -16,6 +16,7 @@ $courier_id = $_GET['id'];
     <div class="waiterNavbar">
         <a href="deleteOnlineOrder_courier.php?id=<?php echo $courier_id ?>">CURRENT ORDERS</a>
         <a href="prev_order_courier.php?id=<?php echo $courier_id ?>">PREVIOUS ORDERS</a>
+        <a href="client_chat.php">SUPPORT PAGE</a>
     </div>
     </body>
 

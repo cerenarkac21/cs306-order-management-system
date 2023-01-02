@@ -41,6 +41,7 @@
         <a href="list_food_waiter.php">LIST FOODS</a>
         <a href="select_dish_waiter.php">FILTER BY CATEGORY</a>
         <a href="prep_time_filter_waiter.php">FILTER BY PREPARATION TIME</a>
+        <a href="client_chat.php">SUPPORT PAGE</a>
     </div>
     </body>
 </html>

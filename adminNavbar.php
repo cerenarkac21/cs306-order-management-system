@@ -42,6 +42,7 @@
         <a href="cashierHome.php">CASHIER PAGE</a>
         <a href="waiterHome.php">WAITER PAGE</a>
         <a href="deleteOnlineOrder_admin.php">COURIER PAGE</a>
+        <a href="admin_chat.php">SUPPORT PAGE</a>
     </div>
     </body>
 </html>
