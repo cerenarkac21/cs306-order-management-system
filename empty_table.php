@@ -66,5 +66,14 @@ else
 
 
 </table>
-<a href="cashierHome.php">Return to the panel.</a>
+<a href="cashierHome.php">Return to the panel</a>
+<?php echo "<br>\n"?>
+<a href="javascript:if(window.print)window.print()">Print Check</a>
+<?php echo "<br>\n"?>
+<?php
+// Return current date from the remote server
+date_default_timezone_set('Europe/Istanbul');
+$date = date('d-m-y h:i:s');
+echo $date;
+?>
 </div>

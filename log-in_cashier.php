@@ -2,14 +2,19 @@
 <html>
 <head>
     <title>Login</title>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'><link rel="stylesheet" href="./style_login.css">
+    <style>
+    body {
+      background: #aa82dd;
+      font-family: 'Rubik', sans-serif;
+    }</style>
 </head>
 <body>
     
-    <h1>Login Here</h1>
-
     <?php
 
     include "config.php";
+
 
     if (isset($_POST['pssword'])){
         $pssword = $_POST['pssword'];
@@ -22,17 +27,35 @@
         } 
         else {
         // No matching row was found, so the input value does not exist in the corresponding table
-        echo "Please enter a valid password";
+            $noadmin = 1;
+        #echo "Please enter a valid password!";
         }
-
+    
     }
     ?>
     
+    <div class="login-form">
+    <h1>Cashier Login</h1>
+    <div class="content2">
+        <h4>
+    <?php
+    if ($noadmin == 1) {
+        echo "<br>\n";
+        echo "\t\t". "Please enter a valid password!";
+    }?></h4></div>
     <form method="post">
-        <label for='pssword'>password</label>
-        <input type='pssword' name='pssword' value="<?= htmlspecialchars($pssword ?? "") ?>">
+    <div class="content">
+      <div class="input-field">
+        <input type='pssword' name='pssword' placeholder="Password" value="<?= htmlspecialchars($pssword ?? "") ?>">
+</div>
+<div class="action">
         <button>Log in</button>
+</div>
     </form>
+    
+</div>
+</div>
+
     
 </body>
 </html>
